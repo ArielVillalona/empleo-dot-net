@@ -41,35 +41,35 @@ namespace EmpleoDotNet
             //                consumerSecret: ConfigurationManager.AppSettings["consumerSecret"]
             //            );
 
-            var fbAuthOptions = new FacebookAuthenticationOptions
-            {
-                AppId = ConfigurationManager.AppSettings["fbAppId"],
-                AppSecret = ConfigurationManager.AppSettings["fbAppSecret"]
-            };
+            // var fbAuthOptions = new FacebookAuthenticationOptions
+            // {
+            //     AppId = ConfigurationManager.AppSettings["fbAppId"],
+            //     AppSecret = ConfigurationManager.AppSettings["fbAppSecret"]
+            // };
 
-            fbAuthOptions.Scope.Add("email");
-            fbAuthOptions.Scope.Add("public_profile");
-            fbAuthOptions.Scope.Add("user_friends");
-            fbAuthOptions.Provider = new FacebookAuthenticationProvider
-            {
-                OnAuthenticated = context =>
-                {
-                    context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
-                    return Task.FromResult(true);
-                }
-            };
-            app.UseFacebookAuthentication(fbAuthOptions);
+            // fbAuthOptions.Scope.Add("email");
+            // fbAuthOptions.Scope.Add("public_profile");
+            // fbAuthOptions.Scope.Add("user_friends");
+            // fbAuthOptions.Provider = new FacebookAuthenticationProvider
+            // {
+            //     OnAuthenticated = context =>
+            //     {
+            //         context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
+            //         return Task.FromResult(true);
+            //     }
+            // };
+            // app.UseFacebookAuthentication(fbAuthOptions);
 
             app.UseGoogleAuthentication(
                 clientId: ConfigurationManager.AppSettings["googleClientId"],
                 clientSecret: ConfigurationManager.AppSettings["googleClientSecret"]
             );
 
-            app.UseLinkedInAuthentication(new LinkedInAuthenticationOptions
-            {
-                ClientId = ConfigurationManager.AppSettings["linkedinClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["linkedinClientSecret"]
-            });
+            // app.UseLinkedInAuthentication(new LinkedInAuthenticationOptions
+            // {
+            //     ClientId = ConfigurationManager.AppSettings["linkedinClientId"],
+            //     ClientSecret = ConfigurationManager.AppSettings["linkedinClientSecret"]
+            // });
         }
     }
 }
